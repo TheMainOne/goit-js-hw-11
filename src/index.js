@@ -2,6 +2,8 @@ import './sass/main.scss';
 import { fetchImages } from './fetchImages';
 import { showAndHideButton } from './showAndHideButton'
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const refs = {
   form: document.querySelector('.search-form'),
@@ -28,7 +30,8 @@ function onFormSumbit(event) {
 function renderGallery(images) {
   const markup = images
     .map(image => {
-      return `
+        return `
+          <a href="${image.largeImageURL}">
         <div class="photo-card">
         <img src="${image.webformatURL}" alt="${image.tags}" loading="lazy" />
         <div class="info">
@@ -49,8 +52,10 @@ function renderGallery(images) {
         ${image.downloads}
         </p>
         </div>
-        </div>`;
+        </div>
+          </a>`;
     })
     .join('');
-  refs.container.innerHTML = markup;
+    refs.container.innerHTML = markup;
+    refs.container = new SimpleLightbox('.gallery a', {captionDelay: 250});
 }
