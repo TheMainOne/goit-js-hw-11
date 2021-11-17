@@ -5,11 +5,13 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
+
 const refs = {
   form: document.querySelector('.search-form'),
   container: document.querySelector('.gallery'),
   loadMoreButton: document.querySelector('.load-more'),
 };
+
 
 showAndHideButton(refs.loadMoreButton);
 
@@ -24,6 +26,9 @@ function onFormSumbit(event) {
 
         renderGallery(imagesArray);
         showAndHideButton(refs.loadMoreButton);
+        refs.loadMoreButton.addEventListener('click', () => {
+    console.log('click')
+});
   });
 }
 
@@ -57,5 +62,5 @@ function renderGallery(images) {
     })
     .join('');
     refs.container.innerHTML = markup;
-    refs.container = new SimpleLightbox('.gallery a', {captionDelay: 250});
+    // refs.container = new SimpleLightbox('.gallery a', { captionDelay: 250, showCounter: false });
 }
