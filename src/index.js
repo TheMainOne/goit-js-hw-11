@@ -1,6 +1,6 @@
 import './sass/main.scss';
 import { fetchImages } from './fetchImages';
-import { showAndHideButton } from './showButton'
+import { showAndHideButton } from './showAndHideButton'
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const refs = {
