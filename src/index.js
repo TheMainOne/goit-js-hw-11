@@ -1,5 +1,6 @@
 import './sass/main.scss';
 import { fetchImages } from './fetchImages';
+import { showAndHideButton } from './showButton'
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const refs = {
@@ -8,15 +9,19 @@ const refs = {
   loadMoreButton: document.querySelector('.load-more'),
 };
 
+showAndHideButton(refs.loadMoreButton);
+
 refs.form.addEventListener('submit', onFormSumbit);
 
 function onFormSumbit(event) {
   event.preventDefault();
   const inputValue = event.currentTarget.searchQuery.value;
+ 
+    fetchImages(inputValue).then(images => {
+        const imagesArray = images.data.hits;
 
-  fetchImages(inputValue).then(images => {
-      console.log(images);
-      renderGallery(images.data.hits);
+        renderGallery(imagesArray);
+        showAndHideButton(refs.loadMoreButton);
   });
 }
 
