@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": ";AAAA;;;GAGG;ACHH,AAAA,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE;AACF,CAAC,CAAC;EACA,UAAU,EAAE,CAAC;EACb,aAAa,EAAE,CAAC;CACjB;;AAED,AAAA,EAAE;AACF,EAAE,CAAC;EACD,UAAU,EAAE,CAAC;EACb,aAAa,EAAE,CAAC;EAChB,YAAY,EAAE,CAAC;CAChB;;AAED,AAAA,GAAG,CAAC;EACF,OAAO,EAAE,KAAK;CACf;;ACpBD,AAAA,YAAY,CAAC;EACX,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM;CACxB;;AAED,AAAA,mBAAmB,CAAC;EAClB,YAAY,EAAE,GAAG;CAClB",
+    "sources": [
+        "main.scss",
+        "_base-styles.scss",
+        "search-form.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}
