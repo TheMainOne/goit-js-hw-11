@@ -1,7 +1,6 @@
 import './sass/main.scss';
+import { fetchImages } from './fetchImages';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
-const axios = require('axios');
 
 const refs = {
   form: document.querySelector('.search-form'),
@@ -12,11 +11,41 @@ const refs = {
 refs.form.addEventListener('submit', onFormSumbit);
 
 function onFormSumbit(event) {
-    event.preventDefault();
-    
-    const inputValue = event.currentTarget.searchQuery.value;
+  event.preventDefault();
+  const inputValue = event.currentTarget.searchQuery.value;
 
-  console.log(inputValue);
+  fetchImages(inputValue).then(images => {
+      console.log(images);
+      renderGallery(images.data.hits);
+  });
 }
 
-// console.log(refs.loadMoreButton);
+function renderGallery(images) {
+  const markup = images
+    .map(image => {
+      return `
+        <div class="photo-card">
+        <img src="${image.webformatURL}" alt="${image.tags}" loading="lazy" />
+        <div class="info">
+        <p class="info-item">
+        <b>Likes</b>
+        ${image.likes}
+        </p>
+        <p class="info-item">
+        <b>Views</b>
+        ${image.views}
+        </p>
+        <p class="info-item">
+        <b>Comments</b>
+        ${image.comments}
+        </p>
+        <p class="info-item">
+        <b>Downloads</b>
+        ${image.downloads}
+        </p>
+        </div>
+        </div>`;
+    })
+    .join('');
+  refs.container.innerHTML = markup;
+}
