@@ -64,3 +64,4 @@ function renderGallery(images) {
     refs.container.innerHTML = markup;
     // refs.container = new SimpleLightbox('.gallery a', { captionDelay: 250, showCounter: false });
 }
+
