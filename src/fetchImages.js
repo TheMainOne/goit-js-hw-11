@@ -1,5 +1,5 @@
 import axios from 'axios';
-export { fetchImages };
+export { fetchImages, resetPage };
 
 const BASE_URL = 'https://pixabay.com/api/';
 let page = 1;
@@ -14,4 +14,8 @@ async function fetchImages(requestValue) {
   } catch (error) {
     console.log(error);
   }
+}
+
+function resetPage() {
+  page = 1;
 }

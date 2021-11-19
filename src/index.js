@@ -1,5 +1,5 @@
 import './sass/main.scss';
-import { fetchImages } from './fetchImages';
+import { fetchImages, resetPage } from './fetchImages';
 import { showButton, hideButton } from './showAndHideButton';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
@@ -19,12 +19,13 @@ refs.loadMoreButton.addEventListener('click', onLoadMore);
 
 function onSearch(event) {
   event.preventDefault();
-  const inputValue = event.currentTarget.searchQuery.value;
   input = event.currentTarget.searchQuery.value;
 
-  fetchImages(inputValue).then(images => {
+  refs.container.innerHTML = '';
+  resetPage();
+  
+  fetchImages(input).then(images => {
     const imagesArray = images.data.hits;
-    console.log(imagesArray);
 
     if (imagesArray.length === 0) {
       Notify.failure('Sorry, there are no images matching your search query. Please try again.');
@@ -37,7 +38,6 @@ function onSearch(event) {
 }
 
 function onLoadMore() {
-  console.log('click');
   fetchImages(input).then(images => {
     const imagesArray = images.data.hits;
     renderGallery(imagesArray);
