@@ -1,3 +1,7 @@
+body {
+  background-color: #efefefe5;
+}
+
 h1,
 h2,
 h3,
@@ -43,19 +47,22 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-bottom: 5px;
-  padding-top: 5px;
+  padding-bottom: 15px;
+  padding-top: 15px;
   background-color: #4056b4;
 }
 
 .search-form__input {
   margin-right: 5px;
-  padding-left: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 3px;
 }
 
 .search-form__button {
+  padding: 10px 20px;
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 3px;
   cursor: pointer;
@@ -78,17 +85,21 @@ a {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
 }
 
 .photo-card {
-  width: 280px;
-  margin-top: 30px;
-  margin-left: 30px;
+  width: 350px;
 }
 
 .photo-card > img {
-  width: 280px;
-  height: 200px;
+  width: 350px;
+  height: 250px;
   -o-object-fit: cover;
      object-fit: cover;
 }
