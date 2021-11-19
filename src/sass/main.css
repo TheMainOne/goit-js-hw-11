@@ -85,16 +85,23 @@ a {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 20px;
+  margin-top: -30px;
+  margin-left: -30px;
+}
+
+.gallery__item {
+  margin-top: 30px;
+  margin-left: 30px;
+  -ms-flex-preferred-size: calc((100% - 150px) / 5);
+      flex-basis: calc((100% - 150px) / 5);
 }
 
 .photo-card {
   width: 350px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 5px 10px 2px;
+          box-shadow: 0 5px 10px 2px;
 }
 
 .photo-card > img {
