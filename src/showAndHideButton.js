@@ -1,4 +1,4 @@
-export { showButton, hideButton};
+export { showButton, hideButton };
 
 function hideButton(item) {
     item.classList.add('visually-hidden');

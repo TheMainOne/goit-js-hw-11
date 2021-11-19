@@ -10,6 +10,7 @@ const refs = {
   container: document.querySelector('.gallery'),
   loadMoreButton: document.querySelector('.load-more'),
 };
+let input = '';
 
 hideButton(refs.loadMoreButton);
 
@@ -19,6 +20,7 @@ refs.loadMoreButton.addEventListener('click', onLoadMore);
 function onSearch(event) {
   event.preventDefault();
   const inputValue = event.currentTarget.searchQuery.value;
+  input = event.currentTarget.searchQuery.value;
 
   fetchImages(inputValue).then(images => {
     const imagesArray = images.data.hits;
@@ -36,6 +38,10 @@ function onSearch(event) {
 
 function onLoadMore() {
   console.log('click');
+  fetchImages(input).then(images => {
+    const imagesArray = images.data.hits;
+    renderGallery(imagesArray);
+  });
 }
 
 function renderGallery(images) {
@@ -67,6 +73,6 @@ function renderGallery(images) {
           </a>`;
     })
     .join('');
-  refs.container.innerHTML = markup;
+  refs.container.insertAdjacentHTML('beforeend', markup)
   // refs.container = new SimpleLightbox('.gallery a', { captionDelay: 250, showCounter: false });
 }
