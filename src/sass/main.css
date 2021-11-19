@@ -94,6 +94,17 @@ a {
   margin-left: 30px;
   -ms-flex-preferred-size: calc((100% - 150px) / 5);
       flex-basis: calc((100% - 150px) / 5);
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+.gallery__item:hover, .gallery__item:focus {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 .photo-card {
