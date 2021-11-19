@@ -24,12 +24,14 @@ function onSearch(event) {
   resetPage();
   fetchImages(input).then(images => {
     const imagesArray = images.data.hits;
+    const totalImages = images.data.totalHits;
 
     if (imagesArray.length === 0) {
       return Notify.failure('Sorry, there are no images matching your search query. Please try again.');
     } else {
       clearGallery();
       renderGallery(imagesArray);
+      Notify.success(`Hooray! We found ${totalImages} images.`);
       showButton(refs.loadMoreButton);
     }
   });
@@ -38,7 +40,7 @@ function onSearch(event) {
 function onLoadMore() {
   fetchImages(input).then(images => {
     const imagesArray = images.data.hits;
-    console.log(images);
+    
     renderGallery(imagesArray);
   }).catch (() => {
     Notify.failure('We are sorry, but you have reached the end of search results.');
