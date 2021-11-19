@@ -21,9 +21,7 @@ function onSearch(event) {
   event.preventDefault();
   input = event.currentTarget.searchQuery.value;
 
-  refs.container.innerHTML = '';
   resetPage();
-  
   fetchImages(input).then(images => {
     const imagesArray = images.data.hits;
 
@@ -31,6 +29,7 @@ function onSearch(event) {
       Notify.failure('Sorry, there are no images matching your search query. Please try again.');
       return;
     } else {
+      clearGallery();
       renderGallery(imagesArray);
       showButton(refs.loadMoreButton);
     }
@@ -40,6 +39,7 @@ function onSearch(event) {
 function onLoadMore() {
   fetchImages(input).then(images => {
     const imagesArray = images.data.hits;
+    console.log(images);
     renderGallery(imagesArray);
   });
 }
@@ -75,4 +75,8 @@ function renderGallery(images) {
     .join('');
   refs.container.insertAdjacentHTML('beforeend', markup)
   // refs.container = new SimpleLightbox('.gallery a', { captionDelay: 250, showCounter: false });
+}
+
+function clearGallery() {
+    refs.container.innerHTML = '';
 }
