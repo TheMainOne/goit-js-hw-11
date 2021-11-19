@@ -100,8 +100,6 @@ a {
   width: 350px;
   background-color: #ffffff;
   border-radius: 10px;
-  -webkit-box-shadow: 0 5px 10px 2px;
-          box-shadow: 0 5px 10px 2px;
 }
 
 .photo-card > img {
@@ -118,6 +116,7 @@ a {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  padding: 10px 10px;
 }
 
 .info-item {
