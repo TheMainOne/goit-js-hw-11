@@ -42,6 +42,13 @@ function onSearch(event) {
 function onLoadMore() {
   fetchImages(input).then(images => {
     const imagesArray = images.data.hits;
+    console.log(imagesArray);
+
+    if (imagesArray.length === 0) {
+      Notify.failure('We are sorry, but you have reached the end of search results.');
+      hideButton(refs.loadMoreButton);
+      return;
+    }
 
     renderGallery(imagesArray);
     new SimpleLightbox('.gallery a', { captionDelay: 250, showCounter: false });
