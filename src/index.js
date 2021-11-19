@@ -4,7 +4,6 @@ import { showButton, hideButton } from './showAndHideButton';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import simpleLightbox from 'simplelightbox';
 
 const refs = {
   form: document.querySelector('.search-form'),
@@ -28,7 +27,9 @@ function onSearch(event) {
     const totalImages = images.data.totalHits;
 
     if (imagesArray.length === 0) {
-      return Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+      return Notify.failure(
+        'Sorry, there are no images matching your search query. Please try again.',
+      );
     } else {
       clearGallery();
       renderGallery(imagesArray);
@@ -40,23 +41,25 @@ function onSearch(event) {
 }
 
 function onLoadMore() {
-  fetchImages(input).then(images => {
-    const imagesArray = images.data.hits;
-    console.log(imagesArray);
+  fetchImages(input)
+    .then(images => {
+      const imagesArray = images.data.hits;
+      console.log(imagesArray);
 
-    if (imagesArray.length === 0) {
+      if (imagesArray.length === 0) {
+        Notify.failure('We are sorry, but you have reached the end of search results.');
+        hideButton(refs.loadMoreButton);
+        return;
+      }
+
+      renderGallery(imagesArray);
+      new SimpleLightbox('.gallery a', { captionDelay: 250, showCounter: false });
+    })
+    .catch(error => {
+      console.log(error);
       Notify.failure('We are sorry, but you have reached the end of search results.');
       hideButton(refs.loadMoreButton);
-      return;
-    }
-
-    renderGallery(imagesArray);
-    new SimpleLightbox('.gallery a', { captionDelay: 250, showCounter: false });
-  }).catch((error) => {
-    console.log(error)
-    Notify.failure('We are sorry, but you have reached the end of search results.');
-    hideButton(refs.loadMoreButton);
-  });
+    });
 }
 
 function renderGallery(images) {
@@ -89,9 +92,8 @@ function renderGallery(images) {
     })
     .join('');
   refs.container.insertAdjacentHTML('beforeend', markup);
-  
 }
 
 function clearGallery() {
-    refs.container.innerHTML = '';
+  refs.container.innerHTML = '';
 }
