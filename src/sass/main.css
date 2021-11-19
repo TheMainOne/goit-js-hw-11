@@ -20,6 +20,11 @@ img {
   display: block;
 }
 
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -29,11 +34,6 @@ img {
   padding: 0;
   clip: rect(0 0 0 0);
   overflow: hidden;
-}
-
-a {
-  text-decoration: none;
-  color: coral;
 }
 
 .search-form {
@@ -68,6 +68,8 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .gallery {
@@ -111,5 +113,11 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.load-more {
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 3px;
+  cursor: pointer;
 }
 /*# sourceMappingURL=main.css.map */

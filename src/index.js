@@ -4,6 +4,7 @@ import { showButton, hideButton } from './showAndHideButton';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+import simpleLightbox from 'simplelightbox';
 
 const refs = {
   form: document.querySelector('.search-form'),
@@ -31,6 +32,7 @@ function onSearch(event) {
     } else {
       clearGallery();
       renderGallery(imagesArray);
+      new SimpleLightbox('.gallery a', { captionDelay: 250, showCounter: false });
       Notify.success(`Hooray! We found ${totalImages} images.`);
       showButton(refs.loadMoreButton);
     }
@@ -42,7 +44,9 @@ function onLoadMore() {
     const imagesArray = images.data.hits;
 
     renderGallery(imagesArray);
-  }).catch (() => {
+    new SimpleLightbox('.gallery a', { captionDelay: 250, showCounter: false });
+  }).catch((error) => {
+    console.log(error)
     Notify.failure('We are sorry, but you have reached the end of search results.');
     hideButton(refs.loadMoreButton);
   });
@@ -77,8 +81,8 @@ function renderGallery(images) {
           </a>`;
     })
     .join('');
-  refs.container.insertAdjacentHTML('beforeend', markup)
-  // refs.container = new SimpleLightbox('.gallery a', { captionDelay: 250, showCounter: false });
+  refs.container.insertAdjacentHTML('beforeend', markup);
+  
 }
 
 function clearGallery() {
