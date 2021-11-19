@@ -33,6 +33,7 @@ img {
 
 a {
   text-decoration: none;
+  color: coral;
 }
 
 .search-form {
@@ -40,12 +41,24 @@ a {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  background-color: #4056b4;
 }
 
 .search-form__input {
   margin-right: 5px;
+  padding-left: 5px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 3px;
+}
+
+.search-form__button {
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 .button-wrapper {
@@ -53,8 +66,8 @@ a {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .gallery {
@@ -62,7 +75,7 @@ a {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .photo-card {
@@ -75,7 +88,7 @@ a {
   width: 280px;
   height: 200px;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 .info {
@@ -83,8 +96,8 @@ a {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .info-item {
@@ -93,10 +106,10 @@ a {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=main.css.map */

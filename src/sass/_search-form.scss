@@ -1,10 +1,26 @@
 .search-form {
   display: flex;
   justify-content: center;
+
+  padding-bottom: 5px;
+  padding-top: 5px;
+
+  background-color: #4056b4;
 }
 
 .search-form__input {
   margin-right: 5px;
+  padding-left: 5px;
+
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 3px;
+}
+
+.search-form__button {
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 3px;
+
+  cursor: pointer;
 }
 
 .button-wrapper {

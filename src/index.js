@@ -40,7 +40,7 @@ function onSearch(event) {
 function onLoadMore() {
   fetchImages(input).then(images => {
     const imagesArray = images.data.hits;
-    
+
     renderGallery(imagesArray);
   }).catch (() => {
     Notify.failure('We are sorry, but you have reached the end of search results.');
