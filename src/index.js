@@ -26,8 +26,7 @@ function onSearch(event) {
     const imagesArray = images.data.hits;
 
     if (imagesArray.length === 0) {
-      Notify.failure('Sorry, there are no images matching your search query. Please try again.');
-      return;
+      return Notify.failure('Sorry, there are no images matching your search query. Please try again.');
     } else {
       clearGallery();
       renderGallery(imagesArray);
@@ -41,6 +40,9 @@ function onLoadMore() {
     const imagesArray = images.data.hits;
     console.log(images);
     renderGallery(imagesArray);
+  }).catch (() => {
+    Notify.failure('We are sorry, but you have reached the end of search results.');
+    hideButton(refs.loadMoreButton);
   });
 }
 
