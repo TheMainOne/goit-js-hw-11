@@ -1,10 +1,9 @@
 import './sass/main.scss';
 import { fetchImages } from './fetchImages';
-import { showAndHideButton } from './showAndHideButton'
+import { showButton, hideButton } from './showAndHideButton';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-
 
 const refs = {
   form: document.querySelector('.search-form'),
@@ -12,30 +11,37 @@ const refs = {
   loadMoreButton: document.querySelector('.load-more'),
 };
 
+hideButton(refs.loadMoreButton);
 
-showAndHideButton(refs.loadMoreButton);
+refs.form.addEventListener('submit', onSearch);
+refs.loadMoreButton.addEventListener('click', onLoadMore);
 
-refs.form.addEventListener('submit', onFormSumbit);
-
-function onFormSumbit(event) {
+function onSearch(event) {
   event.preventDefault();
   const inputValue = event.currentTarget.searchQuery.value;
- 
-    fetchImages(inputValue).then(images => {
-        const imagesArray = images.data.hits;
 
-        renderGallery(imagesArray);
-        showAndHideButton(refs.loadMoreButton);
-        refs.loadMoreButton.addEventListener('click', () => {
-    console.log('click')
-});
+  fetchImages(inputValue).then(images => {
+    const imagesArray = images.data.hits;
+    console.log(imagesArray);
+
+    if (imagesArray.length === 0) {
+      Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+      return;
+    } else {
+      renderGallery(imagesArray);
+      showButton(refs.loadMoreButton);
+    }
   });
+}
+
+function onLoadMore() {
+  console.log('click');
 }
 
 function renderGallery(images) {
   const markup = images
     .map(image => {
-        return `
+      return `
           <a href="${image.largeImageURL}">
         <div class="photo-card">
         <img src="${image.webformatURL}" alt="${image.tags}" loading="lazy" />
@@ -61,7 +67,6 @@ function renderGallery(images) {
           </a>`;
     })
     .join('');
-    refs.container.innerHTML = markup;
-    // refs.container = new SimpleLightbox('.gallery a', { captionDelay: 250, showCounter: false });
+  refs.container.innerHTML = markup;
+  // refs.container = new SimpleLightbox('.gallery a', { captionDelay: 250, showCounter: false });
 }
-

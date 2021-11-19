@@ -1,5 +1,9 @@
-export { showAndHideButton };
+export { showButton, hideButton};
 
-function showAndHideButton(item) {
-    item.classList.toggle('visually-hidden');
+function hideButton(item) {
+    item.classList.add('visually-hidden');
+}
+
+function showButton(item) {
+    item.classList.remove('visually-hidden');
 }
