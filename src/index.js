@@ -22,6 +22,7 @@ function onSearch(event) {
   input = event.currentTarget.searchQuery.value;
 
   resetPage();
+  hideButton(refs.loadMoreButton);
   fetchImages(input).then(images => {
     const imagesArray = images.data.hits;
     const totalImages = images.data.totalHits;
