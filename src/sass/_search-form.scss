@@ -19,12 +19,23 @@
 }
 
 .search-form__button {
-  padding: 10px 20px;
-
-  border: 1px solid rgba(33, 33, 33, 0.2);
-  border-radius: 3px;
-
+  position: relative;
+  display: inline-block;
+  padding: 10px 10px;
+  text-decoration: none;
+  color: #4056b4;
+  border: 4px solid #7ea7d7;
+  border-radius: 4px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  transition: 0.2s;
+  transition-delay: 0.1s;
   cursor: pointer;
+
+  &:hover {
+    padding: 10px 15px;
+  }
 }
 
 .button-wrapper {

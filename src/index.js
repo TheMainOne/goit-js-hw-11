@@ -8,7 +8,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const refs = {
   form: document.querySelector('.search-form'),
   container: document.querySelector('.gallery'),
-  loadMoreButton: document.querySelector('.load-more'),
+  loadMoreButton: document.querySelector('.arrow-btn'),
 };
 let input = '';
 let cardHeight = 0;
