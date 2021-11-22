@@ -28,6 +28,7 @@ function onSearch(event) {
     const totalImages = images.data.totalHits;
 
     if (imagesArray.length === 0) {
+      clearGallery();
       return Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.',
       );
