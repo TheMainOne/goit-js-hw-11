@@ -49,7 +49,6 @@ function onLoadMore() {
   fetchImages(input)
     .then(images => {
       const imagesArray = images.data.hits;
-      console.log(imagesArray);
 
       if (imagesArray.length === 0) {
         Notify.failure('We are sorry, but you have reached the end of search results.');
