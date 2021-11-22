@@ -41,7 +41,6 @@ function onSearch(event) {
       showButton(refs.loadMoreButton);
       
       cardHeight = document.querySelector('.gallery').firstElementChild.getBoundingClientRect();
-            console.log(cardHeight);
     }
   });
 }
