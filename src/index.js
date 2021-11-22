@@ -11,6 +11,7 @@ const refs = {
   loadMoreButton: document.querySelector('.load-more'),
 };
 let input = '';
+let cardHeight = 0;
 
 hideButton(refs.loadMoreButton);
 
@@ -38,6 +39,9 @@ function onSearch(event) {
       new SimpleLightbox('.gallery a', { captionDelay: 250, showCounter: false });
       Notify.success(`Hooray! We found ${totalImages} images.`);
       showButton(refs.loadMoreButton);
+      
+      cardHeight = document.querySelector('.gallery').firstElementChild.getBoundingClientRect();
+            console.log(cardHeight);
     }
   });
 }
@@ -56,6 +60,10 @@ function onLoadMore() {
 
       renderGallery(imagesArray);
       new SimpleLightbox('.gallery a', { captionDelay: 250, showCounter: false });
+      window.scrollBy({
+  top: cardHeight.height * 2,
+  behavior: 'smooth',
+});
     })
     .catch(error => {
       console.log(error);
@@ -99,4 +107,3 @@ function renderGallery(images) {
 function clearGallery() {
   refs.container.innerHTML = '';
 }
-
