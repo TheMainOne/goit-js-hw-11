@@ -105,3 +105,4 @@ function renderGallery(images) {
 function clearGallery() {
   refs.container.innerHTML = '';
 }
+ 
