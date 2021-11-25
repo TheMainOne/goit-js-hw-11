@@ -1,6 +1,7 @@
 import './sass/main.scss';
 import { fetchImages, resetPage } from './fetchImages';
 import { showButton, hideButton } from './showAndHideButton';
+import { clearGallery } from './clearGallery';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
@@ -29,17 +30,17 @@ function onSearch(event) {
     const totalImages = images.data.totalHits;
 
     if (imagesArray.length === 0) {
-      clearGallery();
+      clearGallery(refs.container);
       return Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.',
       );
     } else {
-      clearGallery();
+      clearGallery(refs.container);
       renderGallery(imagesArray);
       new SimpleLightbox('.gallery a', { captionDelay: 250, showCounter: false });
       Notify.success(`Hooray! We found ${totalImages} images.`);
       showButton(refs.loadMoreButton);
-      
+
       cardHeight = document.querySelector('.gallery').firstElementChild.getBoundingClientRect();
     }
   });
@@ -59,9 +60,9 @@ function onLoadMore() {
       renderGallery(imagesArray);
       new SimpleLightbox('.gallery a', { captionDelay: 250, showCounter: false });
       window.scrollBy({
-  top: cardHeight.height * 2,
-  behavior: 'smooth',
-});
+        top: cardHeight.height * 2,
+        behavior: 'smooth',
+      });
     })
     .catch(error => {
       console.log(error);
@@ -101,8 +102,3 @@ function renderGallery(images) {
     .join('');
   refs.container.insertAdjacentHTML('beforeend', markup);
 }
-
-function clearGallery() {
-  refs.container.innerHTML = '';
-}
- 
