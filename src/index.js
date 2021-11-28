@@ -102,3 +102,4 @@ function renderGallery(images) {
     .join('');
   refs.container.insertAdjacentHTML('beforeend', markup);
 }
+
